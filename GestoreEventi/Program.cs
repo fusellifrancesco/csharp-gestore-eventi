@@ -17,6 +17,7 @@ try {
 
     evento1.StampaPostiPrenotati();
     evento1.StampaPostiRimasti();
+    Console.WriteLine();
 
     bool flag = false;
     while (flag != true) {
@@ -27,16 +28,19 @@ try {
             Console.Write("Inserisi il numero di posti da disdire: ");
             int postiAnnullati = int.Parse(Console.ReadLine());
             evento1.DisdiciPosti(postiAnnullati);
+            Console.WriteLine();
             evento1.StampaPostiPrenotati();
             evento1.StampaPostiRimasti();
         } else if (input == "no") {
             flag = true;
         } else {
             Console.WriteLine("Devi inserire si o no");
+            Console.WriteLine();
         }
 
     }
     Console.WriteLine("Ok va bene!");
+    Console.WriteLine();
     evento1.StampaPostiPrenotati();
     evento1.StampaPostiRimasti();
 
