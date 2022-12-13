@@ -23,8 +23,8 @@ namespace GestoreEventi {
         public string GetTitolo() {
             return this.titolo;
         }
-        public DateTime GetData() {
-            return this.data;
+        public string GetData() {
+            return data.ToShortDateString();
         }
         public int GetPostiPrenotati() {
             return this.postiPrenotati;
@@ -80,16 +80,6 @@ namespace GestoreEventi {
         }
         public void StampaPostiPrenotati() {
             Console.WriteLine("Numero di posti prenotati: " + this.postiPrenotati);
-        }
-
-
-        public virtual bool VerificaData(string data) {
-            DateTime dataInserita = DateTime.Parse(data);
-            if (dataInserita == this.data) {
-                return true;
-            } else {
-                return false;
-            }
         }
     }
 }

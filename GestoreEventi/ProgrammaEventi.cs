@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GestoreEventi {
-    public class ProgrammaEventi : Evento{
+    public class ProgrammaEventi {
         private string titolo;
         private List<Evento> eventi;
 
@@ -21,29 +21,36 @@ namespace GestoreEventi {
             return titolo;
         }
 
-        // METODI PRIVATI
+        public int GetEventi() { 
+            return eventi.Count();
+        }
 
-
+        public List<Evento> GetEventiLista() {
+            return eventi;
+        }
 
         // METODI PUBBLICI
 
         public void AggiungiALista(Evento evento) {
             this.eventi.Add(evento);
         }
-        
-        public void StampaEventiPerData(List<Evento> eventi, string data) {
-            foreach (Evento evento in eventi) {
-                if (evento.VerificaData(data)) {
-                    Console.WriteLine("Evento Presente, stampa in corso...");
-                    Console.WriteLine(evento);
-                    return;
+
+        public List<Evento> EventiPerData(string data) {
+            DateTime dataInserita = DateTime.Parse(data);
+            string dataInseritaStringa = dataInserita.ToShortDateString();
+            List<Evento> listaData = new List<Evento>();
+            foreach (Evento evento in this.eventi) {
+                if (dataInseritaStringa == evento.GetData()) {
+                    listaData.Add(evento);
                 }
             }
+            return listaData;
         }
 
-        public static string RappresentaInStringa() {
-            foreach (var evento in this.eventi)
-            return ($@"");
+        public static void RappresentaInStringa(List<Evento> eventi) {
+            foreach (var evento in eventi)
+                evento.ToString();
+            //Console.WriteLine($@"{evento}");
         }
 
         public void StampaNumeroEventi() {
@@ -56,9 +63,9 @@ namespace GestoreEventi {
         }
 
         public void StampaStringaDataTitolo() {
-            foreach (Evento evento in this.eventi) { 
+            Console.WriteLine("----" + titolo + "----");
+            foreach (Evento evento in this.eventi) {     
             Console.WriteLine( $@"
-----{titolo}----
 {evento.GetData()} - {evento.GetTitolo()}");
             }
         }
