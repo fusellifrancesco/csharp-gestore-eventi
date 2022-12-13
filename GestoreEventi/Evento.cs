@@ -11,11 +11,11 @@ namespace GestoreEventi {
         private int capienzaMax;
         private int postiPrenotati;
 
-        public Evento(string titolo, string data, int capienzaMax) {
+        public Evento(string titolo, string data, int capienzaMax, int prenotati = 0) {
             this.titolo = titolo;
             this.data = DataStringaInDateTime(data);
             this.capienzaMax= capienzaMax;
-            this.postiPrenotati = 0;
+            this.postiPrenotati = prenotati;
         }
 
         // GETTERS
@@ -73,6 +73,13 @@ namespace GestoreEventi {
         public override string ToString() {
             return this.titolo + " - " + this.data;
                 
+        }
+
+        public void StampaPostiRimasti() {
+            Console.WriteLine("Numero di posti disponibili: " + (this.capienzaMax - this.postiPrenotati));
+        }
+        public void StampaPostiPrenotati() {
+            Console.WriteLine("Numero di posti prenotati: " + this.postiPrenotati);
         }
     }
 }
