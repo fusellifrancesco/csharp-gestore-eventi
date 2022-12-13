@@ -29,8 +29,10 @@ try {
             evento1.DisdiciPosti(postiAnnullati);
             evento1.StampaPostiPrenotati();
             evento1.StampaPostiRimasti();
-        } else {
+        } else if (input == "no") {
             flag = true;
+        } else {
+            Console.WriteLine("Devi inserire si o no");
         }
 
     }
